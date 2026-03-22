@@ -5,7 +5,7 @@ namespace Kse.Algorithms.Assignment2
 
     public class MapPrinter
     {
-        public void Print(string[,] maze)
+        public void Print(string[,] maze, List<Point> path)
         {
             PrintTopLine();
             for (var row = 0; row < maze.GetLength(1); row++)
@@ -13,14 +13,23 @@ namespace Kse.Algorithms.Assignment2
                 Console.Write($"{row}\t");
                 for (var column = 0; column < maze.GetLength(0); column++)
                 {
-					if (row == 0 && column == 0) {
-						Console.Write("A");
-					}
-					else if (row == maze.GetLength(1)-1 && column == maze.GetLength(0)-1) {
-						Console.Write("B");
+					var currentPoint = new Point(column, row);
+					if (path.Contains(currentPoint)) 
+					{
+						if (currentPoint == path[0]) 
+						{
+							Console.Write("A");
+						}
+						else if (currentPoint == path[^1]) 
+						{
+							Console.Write("B");
+						}
+						else {
+							Console.Write(".");
+						}
 					}
 					else {
-						Console.Write(maze[column, row]);
+					Console.Write(maze[column, row]);
 					}
                 }
 
