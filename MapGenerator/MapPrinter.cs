@@ -13,7 +13,15 @@ namespace Kse.Algorithms.Assignment2
                 Console.Write($"{row}\t");
                 for (var column = 0; column < maze.GetLength(0); column++)
                 {
-                    Console.Write(maze[column, row]);
+					if (row == 0 && column == 0) {
+						Console.Write("A");
+					}
+					else if (row == maze.GetLength(1)-1 && column == maze.GetLength(0)-1) {
+						Console.Write("B");
+					}
+					else {
+						Console.Write(maze[column, row]);
+					}
                 }
 
                 Console.WriteLine();
